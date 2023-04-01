@@ -10,16 +10,16 @@ const AddContact = () => {
 
     return (<div>Aquí debería agregar contactos nuevos
         <br />
-        <Link to="/">Regresar a lista de contactos</Link>
+        <Link to="/">Back to ContactList</Link>
         <br />
-        <input placeholder="Agregue el nombre del contacto" name="nombre" onChange={(e) => { setData({ ...data, full_name: e.target.value }) }} />
-        <input placeholder="Agregue nuúmero de teléfono" name="tlf" onChange={(e) => { setData({ ...data, phone: e.target.value }) }} />
-        <input placeholder="Agregue correo" name="correo" onChange={(e) => { setData({ ...data, email: e.target.value }) }} />
+        <input placeholder="Add New Cantact" name="nombre" onChange={(e) => { setData({ ...data, full_name: e.target.value }) }} />
+        <input placeholder="Add phoneNumber" name="tlf" onChange={(e) => { setData({ ...data, phone: e.target.value }) }} />
+        <input placeholder="Add email" name="correo" onChange={(e) => { setData({ ...data, email: e.target.value }) }} />
 
 
         <button type="button" onClick={() => {
             actions.addContact(data)
-        }}>Agregar Contacto a la Agenda</button>
+        }}>Add Contact to the Agenda</button>
 
         <br />
         <button onClick={async () => {
@@ -27,7 +27,7 @@ const AddContact = () => {
                 {
                     full_name: data.full_name,
                     email: data.email,
-                    agenda_slug: "agenda_de_antonio",
+                    agenda_slug: "LesCampos_Agenda",
                     address: "47568 NW 34ST, 33434 FL, USA",
                     phone: data.phone
                 },

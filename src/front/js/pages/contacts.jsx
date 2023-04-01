@@ -25,7 +25,7 @@ const Contactos = () => {
     return (<div>
         Contactos
         <br />
-        <Link to="/add-contact">Agregar un contacto</Link>
+        <Link to="/add-contact">Add New Contact</Link>
         <br />
         <input type="text" placeholder="nombreNuevo" onChange={(e) => setNombre(e.target.value)} />
         <br />
@@ -52,7 +52,7 @@ const Contactos = () => {
                                 className="btn btn-danger"
                                 type="button"
                                 onClick={() => { actions.deleteContact(index) }}>
-                                Eliminar Contacto
+                                Delete Contact
                             </button>
                         </li>
                     )
