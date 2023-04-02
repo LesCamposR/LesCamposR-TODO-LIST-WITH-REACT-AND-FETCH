@@ -40,13 +40,13 @@ const Contactos = () => {
                                 button="button"
                                 onClick={() => {
                                     if (nombre == "") {
-                                        alert("Agregue un nombre")
+                                        alert("Please add a new name")
                                         return
                                     }
                                     actions.editContact(index, nombre)
                                 }}
                             >
-                                Editar
+                                Edit
                             </button>
                             <button
                                 className="btn btn-danger"
@@ -57,7 +57,7 @@ const Contactos = () => {
                         </li>
                     )
                 })}
-            </> : <>No hay contactos</>}
+            </> : <>No contacts available</>}
         </ul>
     </div>)
 }
