@@ -3,7 +3,7 @@ export const contactStore = {
     {
       full_name: "George Bradley",
       email: "George@gmail.com",
-      agenda_slug: "LesCampos_Agenda",
+      agenda_slug: "LesCampos_agenda",
       address: "47568 NW 34ST, 33434 FL, USA",
       phone: "7864445566",
     },
@@ -83,7 +83,7 @@ export function contactActions(getStore, getActions, setStore) {
           body: JSON.stringify({
             full_name: "Gorge",
             email: "Gorge11@gmail.com",
-            agenda_slug: "LesCampos_Agenda",
+            agenda_slug: "LesCampos_agenda",
             address: "47568 NW 34ST, 33434 FL, USA",
             phone: "7864445566",
           }),

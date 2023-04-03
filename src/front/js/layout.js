@@ -9,6 +9,9 @@ import injectContext from "./store/appContext";
 import { LesCampos } from "./pages/lesCampos";
 
 import { Navbar } from "./component/navbar";
+import ContactList from "./pages/contacts.jsx";
+import EditContact from "./pages/editContact.jsx";
+
 import { Footer } from "./component/footer";
 
 import Contactos from "./pages/contacts.jsx";
@@ -30,6 +33,8 @@ const Layout = () => {
             <Route element={<Demo />} path="/demo" />
             <Route element={<lesCampos />} path="/lesCampos" />
             <Route element={<AddContact />} path="/add-contact" />
+            <Route element={<ContactList />} path="/list" />
+            <Route element={<EditContact />} path="/edit-contact/:contactID" />
             <Route element={<h1>Working Hard</h1>} path="/4geeks" />
             <Route element={<Single />} path="/single/:thetitle" />
             <Route element={<h1>Not found! 404</h1>} path="*" />

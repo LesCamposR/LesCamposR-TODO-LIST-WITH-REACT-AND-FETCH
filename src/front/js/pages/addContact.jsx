@@ -1,44 +1,72 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddContact = () => {
     const { store, actions } = useContext(Context)
-    const [data, setData] = useState({})
 
-    useEffect(() => { }, [data.full_name, data.phone, data.email])
+    return (<div className="container mt-4 bg-light p-3">
+        <div className="d-flex align-items-center">
+            <h1>Add Contact</h1>
+            <Link to="/"><button type="button" className="btn btn-primary m-3">Go Back</button></Link>
+        </div>
+        <form className="row g-3">
+            <div className="col-md-6">
+                <label for="full-name" className="form-label">Full Name:</label>
+                <input type="text" className="form-control" id="full-name" name="full-name" placeholder="full name" />
+            </div>
+            <div className="col-md-6">
+                <label for="email" className="form-label">Email:</label>
+                <input type="email" className="form-control" id="email" name="email" placeholder="email" />
+            </div>
+            <div className="col-12">
+                <label for="address" className="form-label">Address:</label>
+                <input type="text" className="form-control" id="address" name="address" placeholder="address" />
+            </div>
+            <div className="col-md-6">
+                <label for="phone" className="form-label">Phone:</label>
+                <input type="tel" className="form-control" id="phone" name="phone" placeholder="phone number" />
+            </div>
+            <div className="col-md-12 d-flex align-items-end justify-content-center">
+                <button type="button" className="btn btn-primary w-50 mt-4" onClick={async () => {
+                    const full_name = document.getElementById("full-name").value;
+                    const email = document.getElementById("email").value;
+                    const phone = document.getElementById("phone").value;
+                    const address = document.getElementById("address").value;
 
-    return (<div>Aquí debería agregar contactos nuevos
-        <br />
-        <Link to="/">Back to ContactList</Link>
-        <br />
-        <input placeholder="Add New Cantact" name="nombre" onChange={(e) => { setData({ ...data, full_name: e.target.value }) }} />
-        <input placeholder="Add phoneNumber" name="tlf" onChange={(e) => { setData({ ...data, phone: e.target.value }) }} />
-        <input placeholder="Add email" name="correo" onChange={(e) => { setData({ ...data, email: e.target.value }) }} />
+                    const newContact = {
+                        full_name,
+                        email,
+                        phone,
+                        address,
+                        agenda_slug: "LesCampos_agenda",
+                    };
+                    let { respuestaJson, response } = await actions.useFetch("/apis/fake/contact/", newContact, "POST")
+                    if (!response.ok) {
+                        console.log(response)
+                        Swal.fire("Error", "Please carefully review the information and try again", "X");
+                        return;
+                    }
 
 
-        <button type="button" onClick={() => {
-            actions.addContact(data)
-        }}>Add Contact to the Agenda</button>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Contect added Successfully',
+                        showConfirmButton: true,
+                    });
 
-        <br />
-        <button onClick={async () => {
-            let { respuestaJson, response } = await actions.useFetch("/apis/fake/contact/",
-                {
-                    full_name: data.full_name,
-                    email: data.email,
-                    agenda_slug: "LesCampos_Agenda",
-                    address: "47568 NW 34ST, 33434 FL, USA",
-                    phone: data.phone
-                },
-                "POST"
-            )
-            if (!response.ok) {
-                alert("No se registró el contacto")
-                return
-            }
-            console.log("Contacto creado: \n", respuestaJson)
-        }}>Boton con fetch</button>
+                    document.getElementById("full-name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("phone").value = "";
+                    document.getElementById("address").value = "";
+                }}>Add Contact</button>
+            </div>
+
+
+        </form>
+
     </div>)
 }
 
