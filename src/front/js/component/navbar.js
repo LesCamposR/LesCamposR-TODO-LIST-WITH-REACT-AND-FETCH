@@ -7,7 +7,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-light">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">Contact List App </span>
+          <span className="navbar-brand mb-0 h1">ToDoList </span>
         </Link>
         <div className="ml-auto">
           <Link to="/demo">

@@ -13,6 +13,7 @@ import ContactList from "./pages/contacts.jsx";
 import EditContact from "./pages/editContact.jsx";
 
 import { Footer } from "./component/footer";
+import ToDoList from "./component/ToDoList.jsx";
 
 import Contactos from "./pages/contacts.jsx";
 import AddContact from "./pages/addContact.jsx";
@@ -29,7 +30,8 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            <Route element={<Contactos />} path="/" />
+            <Route element={<Home />} path="/" />
+            <Route element={<ToDoList />} path="/ToDoList" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<lesCampos />} path="/lesCampos" />
             <Route element={<AddContact />} path="/add-contact" />
