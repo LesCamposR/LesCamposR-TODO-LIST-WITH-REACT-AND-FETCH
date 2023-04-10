@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { LesCampos } from "./pages/lesCampos";
+import lesCampos from "./pages/lesCampos";
 
 import { Navbar } from "./component/navbar";
 import ContactList from "./pages/contacts.jsx";

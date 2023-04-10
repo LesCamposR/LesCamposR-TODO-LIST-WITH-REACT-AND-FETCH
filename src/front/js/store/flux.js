@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         return { respuestaJson, response };
       },
       getFetch: async (endpoint) => {
-        let url = "https://assets.breatheco.de" + endpoint;
+        let url = process.env.BACKEND_URL + endpoint;
         let response = await fetch(url);
 
         let respuestaJson = await response.json();
