@@ -69,7 +69,7 @@ export const Home = () => {
           </lu>
         ) : (
           <>
-            <h3>No Tasks to do</h3>
+            <h3>No Tasks to do.</h3>
           </>
         )}
       </div>
