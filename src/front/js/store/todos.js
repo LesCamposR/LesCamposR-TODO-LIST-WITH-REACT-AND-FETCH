@@ -41,7 +41,7 @@ export function todoActions(getStore, getActions, setStore) {
         console.log(response);
         setStore({ ...store, todoList: arrTemp }); //reenderizando el componente con lo que está efectivamente en backend
       } else {
-        alert("No se actualizó o no hubo conexión con la API");
+        alert("No connection with API");
       }
     },
     agregarToDo: async (tarea) => {
@@ -66,7 +66,7 @@ export function todoActions(getStore, getActions, setStore) {
         console.log(response);
         return true; //puedo devolver true si fue correcto
       } else {
-        alert("No se agregó o no hubo conexión con la API");
+        alert("No connection with API");
         return false;
       }
     },

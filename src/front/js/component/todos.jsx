@@ -12,11 +12,18 @@ export const ToDo = () => {//Esta es la versión con estados centralizados, la r
             actions.getToDoList()
         }
         cargaDatos()
+
         let limpiar = document.querySelector("#tarea")
         limpiar.value = ""
     }, [store.user, refresh]) //El componente se renderizará la primera vez y cada vez que el estado user o refresh cambien
 
     useEffect(() => { console.log(store.todoList) }, [store.todoList])
+    useEffect(() => {
+        const cargaDatos = async () => {
+            actions.getToDoList()
+        }
+        cargaDatos()
+    }, [refresh])
 
     return (
         <div className="text-center mt-5">
