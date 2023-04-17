@@ -6,11 +6,12 @@ import "../../styles/home.css";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [tasks, setTasks] = useState([]);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     const cargaDatos = async () => {
       let { respuestaJson, response } = await actions.useFetch(
-        "/todos/user/LesCampos"
+        "`/todos/user/${user}`"
       );
       if (response.ok) {
         setTasks(respuestaJson);
@@ -20,6 +21,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {}, [tasks]);
+  useEffect(() => {}, [user]);
 
   const remove = async (i) => {
     let arrTemp = tasks.filter((item, index) => {
@@ -27,7 +29,7 @@ export const Home = () => {
     });
 
     let { respuestaJson, response } = await actions.useFetch(
-      "/todos/user/LesCampos",
+      "`/todos/user/${user}`",
       arrTemp,
       "PUT"
     );
@@ -45,8 +47,20 @@ export const Home = () => {
       <div className="text-center mt-5">
         <h1>List of tasks:</h1>
         <br />
+        <input
+          placeholder="username"
+          onChange={(e) => {
+            setUser(e.target.value);
+          }}
+        ></input>
+        <br />
+        <input
+          placeholder="agrear nueva tarea a la lista"
+          onChange={(e) => {}}
+        ></input>
+        <br />
         {tasks && tasks.length > 0 ? (
-          <lu className="list-group list-group-flush col-6">
+          <li className="list-group list-group-flush col-6">
             {tasks.map((item, index) => {
               return (
                 <li
@@ -66,7 +80,7 @@ export const Home = () => {
                 </li>
               );
             })}
-          </lu>
+          </li>
         ) : (
           <>
             <h3>No Tasks to do.</h3>

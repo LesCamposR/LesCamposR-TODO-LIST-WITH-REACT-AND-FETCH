@@ -6,14 +6,12 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import lesCampos from "./pages/lesCampos";
 
 import { Navbar } from "./component/navbar";
 import ContactList from "./pages/contacts.jsx";
 import EditContact from "./pages/editContact.jsx";
 
 import { Footer } from "./component/footer";
-import ToDoList from "./component/ToDoList.jsx";
 
 import Contactos from "./pages/contacts.jsx";
 import AddContact from "./pages/addContact.jsx";
@@ -31,7 +29,6 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<ToDoList />} path="/ToDoList" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<lesCampos />} path="/lesCampos" />
             <Route element={<AddContact />} path="/add-contact" />
