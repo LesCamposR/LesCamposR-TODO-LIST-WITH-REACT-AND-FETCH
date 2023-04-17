@@ -11,7 +11,7 @@ export const Home = () => {
   useEffect(() => {
     const cargaDatos = async () => {
       let { respuestaJson, response } = await actions.useFetch(
-        "`/todos/user/${user}`"
+        "/todos/user/LesCampos"
       );
       if (response.ok) {
         setTasks(respuestaJson);
@@ -21,7 +21,6 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {}, [tasks]);
-  useEffect(() => {}, [user]);
 
   const remove = async (i) => {
     let arrTemp = tasks.filter((item, index) => {
@@ -29,14 +28,14 @@ export const Home = () => {
     });
 
     let { respuestaJson, response } = await actions.useFetch(
-      "`/todos/user/${user}`",
+      "/todos/user/LesCampos",
       arrTemp,
       "PUT"
     );
     if (response.ok) {
       setTasks(arrTemp);
     } else {
-      alert("Something Went Wrong");
+      alert("Something went wrong");
     }
   };
 
@@ -44,20 +43,30 @@ export const Home = () => {
     <div className="text-center mt-5">
       <h1>{store.usuario.msg}</h1>
       <br />
+      <input
+        placeholder="username"
+        onChange={(e) => {
+          setUser(e.target.value);
+        }}
+      ></input>
+      <br />
+      <br></br>
+      <input
+        placeholder="agrear nueva tarea a la lista"
+        id="tarea"
+        onKeyUp={async (e) => {
+          if (e.key == "Enter") {
+            console.log("tarea", e.target.value);
+            let resultado = await actions.agregarToDo(e.target.value);
+            if (resultado) {
+              setRefresh(!refresh);
+              e.target.value = ""; //restauro el valor a vacío
+            }
+          }
+        }}
+      ></input>
       <div className="text-center mt-5">
         <h1>List of tasks:</h1>
-        <br />
-        <input
-          placeholder="username"
-          onChange={(e) => {
-            setUser(e.target.value);
-          }}
-        ></input>
-        <br />
-        <input
-          placeholder="agrear nueva tarea a la lista"
-          onChange={(e) => {}}
-        ></input>
         <br />
         {tasks && tasks.length > 0 ? (
           <li className="list-group list-group-flush col-6">
