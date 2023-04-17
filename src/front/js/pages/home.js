@@ -42,44 +42,6 @@ export const Home = () => {
   return (
     <div className="text-center mt-5">
       <br />
-      <input
-        placeholder="username"
-        onChange={(e) => {
-          setUser(e.target.value);
-        }}
-      ></input>
-      <br />
-      <div className="text-center mt-5">
-        <h1>List of tasks:</h1>
-        <br />
-        {tasks && tasks.length > 0 ? (
-          <li className="list-group list-group-flush col-6">
-            {tasks.map((item, index) => {
-              return (
-                <li
-                  key={index}
-                  className="list-group-item d-flex justify-content-between"
-                >
-                  {item.label}
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger" //Agrego un botón para eliminar el todo
-                    onClick={() => {
-                      remove(index); //este botón ejecuta esta acción y le pasamos el índice
-                    }}
-                  >
-                    x
-                  </button>
-                </li>
-              );
-            })}
-          </li>
-        ) : (
-          <>
-            <h3>No Tasks to do.</h3>
-          </>
-        )}
-      </div>
 
       <p>
         <img width={950} src={lesPhoto} />
