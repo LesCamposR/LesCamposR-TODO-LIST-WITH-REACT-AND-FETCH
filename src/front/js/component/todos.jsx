@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import lesPhoto from "../../img/DJI_0008.png";
 
 export const ToDo = () => {//Esta es la versión con estados centralizados, la razón de usar estados centralizados es poder comunicar estados entre componentes
     const { store, actions } = useContext(Context);
@@ -57,8 +58,11 @@ export const ToDo = () => {//Esta es la versión con estados centralizados, la r
                     </li>
                 })}</ul>
                 :
-                <>No hay tareas por hacer o no existe el usuario, presione la tecla ENTER en el input de tareas para crear el usuario</>
+                <>No Task to Do or Invalid User, Add a new Task and then press ENTER</>
             }
+            <p>
+                <img width={950} src={lesPhoto} />
+            </p>
         </div>
     );
 };

@@ -1,5 +1,9 @@
 export const todoStore = {
   todoList: [],
+  todo: {
+    label: "",
+    done: false,
+  },
 };
 
 export function todoActions(getStore, getActions, setStore) {
