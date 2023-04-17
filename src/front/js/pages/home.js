@@ -11,14 +11,14 @@ export const Home = () => {
   useEffect(() => {
     const cargaDatos = async () => {
       let { respuestaJson, response } = await actions.useFetch(
-        "/todos/user/LesCampos"
+        `/todos/user/${user}`
       );
       if (response.ok) {
         setTasks(respuestaJson);
       }
     };
     cargaDatos();
-  }, []);
+  }, [user]);
 
   useEffect(() => {}, [tasks]);
 
@@ -28,7 +28,7 @@ export const Home = () => {
     });
 
     let { respuestaJson, response } = await actions.useFetch(
-      "/todos/user/LesCampos",
+      `/todos/user/${user}`,
       arrTemp,
       "PUT"
     );
@@ -41,7 +41,6 @@ export const Home = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>{store.usuario.msg}</h1>
       <br />
       <input
         placeholder="username"
@@ -50,21 +49,6 @@ export const Home = () => {
         }}
       ></input>
       <br />
-      <br></br>
-      <input
-        placeholder="agrear nueva tarea a la lista"
-        id="tarea"
-        onKeyUp={async (e) => {
-          if (e.key == "Enter") {
-            console.log("tarea", e.target.value);
-            let resultado = await actions.agregarToDo(e.target.value);
-            if (resultado) {
-              setRefresh(!refresh);
-              e.target.value = ""; //restauro el valor a vacío
-            }
-          }
-        }}
-      ></input>
       <div className="text-center mt-5">
         <h1>List of tasks:</h1>
         <br />
